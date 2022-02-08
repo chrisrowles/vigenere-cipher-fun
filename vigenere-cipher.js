@@ -18,10 +18,10 @@ class VigenereCipher
     {
         let ciphertext = ''
         const padded = this.padKeyword(keyword, plaintext.length)
-        
-        plaintext.split('').forEach((letter, index) => {
-            ciphertext += this.tabulaRecta[padded[index]][letter]
-        })
+
+        for (const [i, letter] of plaintext.split('').entries()) {
+            ciphertext += this.tabulaRecta[padded[i]][letter]
+        }
         
         return ciphertext
     }
@@ -37,10 +37,10 @@ class VigenereCipher
     {
         let plaintext = ''
         keyword = this.padKeyword(keyword, ciphertext.length)
-        
-        ciphertext.split('').forEach((letter, i) => {
+
+        for (const [i, letter] of ciphertext.split('').entries()) {
             plaintext += this.getOriginalPosition(this.tabulaRecta[keyword[i]], letter)
-        })
+        }
         
         return plaintext
     }
