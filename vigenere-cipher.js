@@ -1,6 +1,6 @@
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
 
-class VigenereCipher
+export default class VigenereCipher
 {
     constructor()
     {
@@ -135,5 +135,3 @@ class VigenereCipher
         return Object.keys(row).find(key => row[key] === letter)
     }
 }
-
-export default new VigenereCipher()
