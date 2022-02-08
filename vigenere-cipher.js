@@ -4,7 +4,7 @@ class VigenereCipher
 {
     constructor()
     {
-        this.tabulaRecta = this.build()
+        this.tabulaRecta = this.buildTabulaRecta()
     }
     
     /**
@@ -50,9 +50,9 @@ class VigenereCipher
     *
     * @return {object}
     */
-    build()
+    buildTabulaRecta()
     {
-        const table = this.schema()
+        const table = this.buildSchema()
 
         for (const [i, row] of alphabet.entries()) {
             const shifted = this.shiftArray(alphabet, i)
@@ -69,7 +69,7 @@ class VigenereCipher
     *
     * @return {object}
     */
-    schema()
+    buildSchema()
     {
         const column = {}
 
