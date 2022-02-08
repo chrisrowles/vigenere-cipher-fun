@@ -1,34 +1,24 @@
-import { alphabet, alphabet13, alphabetPShift } from './config.js'
+import cipher from './vigenere-cipher.js'
 
-const rot13 = (str) => {
-    return str.replace(/[A-Z]/gi, (char) => alphabet13[alphabet.indexOf(char)])
-}
 
-const apos  = (str) => {
-    return [...str].map((char) => (parseInt(char, 36) - 10) + alphabetPShift).filter((char) => char >= 0)
-}
+function encrypt() {
+    const plaintext = 'HELLOWORLD'
+    const keyword = 'LEMON'
+    const expected = 'SIXZBHSDZQ'
+    const result = cipher.encrypt(plaintext, keyword)
 
-const posa = (num) => {
-    let str = ''
-    for (const n in num) {
-        str += String.fromCharCode(parseInt(n) + 'A'.charCodeAt(0))
-    }
-
-    return str
-}
-
-const tabulaRecta = () => {
-    const b = alphabet.slice(-26).split('')
-
-    return b.map((n,m) => b.map((o,p,q,r=m) => alphabet[(q+p)%26].join("")).join("\n"))
+    console.log({plaintext, result, expected})
 }
 
 
-const test = 'abc'
-const positions = apos(test)
-const encoded = rot13(test)
+function decrypt() {
+    const ciphertext = 'SIXZBHSDZQ'
+    const keyword = 'LEMON'
+    const expected = 'HELLOWORLD'
+    const result = cipher.decrypt(ciphertext, keyword)
 
-const posaTest = posa(positions)
+    console.log({ciphertext, result, expected})
+}
 
-console.log({positions, encoded, posaTest})
-// console.log(tabulaRecta())
+encrypt()
+decrypt()
