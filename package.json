@@ -1,0 +1,20 @@
+{
+  "name": "vigenere-cipher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisrowles/vigenere-cipher-fun.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrisrowles/vigenere-cipher-fun/issues"
+  },
+  "homepage": "https://github.com/chrisrowles/vigenere-cipher-fun#readme"
+}
