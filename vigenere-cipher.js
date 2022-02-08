@@ -17,10 +17,10 @@ class VigenereCipher
     encrypt(plaintext, keyword)
     {
         let ciphertext = ''
-        const treated = this.treat(keyword, plaintext.length)
+        const padded = this.padKeyword(keyword, plaintext.length)
         
         plaintext.split('').forEach((letter, index) => {
-            ciphertext += this.tabulaRecta[treated[index]][letter]
+            ciphertext += this.tabulaRecta[padded[index]][letter]
         })
         
         return ciphertext
@@ -36,10 +36,10 @@ class VigenereCipher
     decrypt(ciphertext, keyword)
     {
         let plaintext = ''
-        const treatedKeyword = this.treat(keyword, ciphertext.length)
+        keyword = this.padKeyword(keyword, ciphertext.length)
         
-        ciphertext.split('').forEach((letter, index) => {
-            plaintext += this.getOriginalPosition(this.tabulaRecta[treatedKeyword[index]], letter)
+        ciphertext.split('').forEach((letter, i) => {
+            plaintext += this.getOriginalPosition(this.tabulaRecta[keyword[i]], letter)
         })
         
         return plaintext
@@ -104,24 +104,24 @@ class VigenereCipher
     }
     
     /**
-    * Fetch a keyword within the given limit.
+    * Pad the keyword to the given limit.
     *
-    * @param {string} keyword - Keyword to be verified and treated
+    * @param {string} keyword - Keyword to be verified and padded
     * @param {string} limit - Maximum length the keyword is allowed to be
     * @return {string}
     */
-    treat(keyword, limit) {
-        let treated = keyword
+    padKeyword(keyword, limit) {
+        let padded = keyword
         
-        while (treated.length < limit) {
-            treated += treated
+        while (padded.length < limit) {
+            padded += padded
         }
         
-        if (treated.length > limit) {
-            treated = treated.substring(0, limit)
+        if (padded.length > limit) {
+            padded = padded.substring(0, limit)
         }
         
-        return treated
+        return padded
     }
     
     /**
