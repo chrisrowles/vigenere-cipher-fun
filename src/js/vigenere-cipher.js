@@ -1,11 +1,31 @@
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-const space = '6666'
 
 export default class VigenereCipher
 {
     constructor()
     {
         this.tabulaRecta = this.buildTabulaRecta()
+    }
+
+    apos(plaintext) {
+        return [...plaintext]
+            .map((char) => parseInt(char, 36) - 10)
+            .filter((char) => char >= 0)
+            .toLocaleString('en-US', {
+                minimumIntegerDigits: 2,
+                useGrouping:false
+            })
+            .split(',')
+            .join('')
+    }
+
+    posa(ciphertext) {
+        let text = ''
+        for (const n of ciphertext.match(/.{1,2}/g)) {
+            text += String.fromCharCode(parseInt(n) + 'A'.charCodeAt(0))
+        }
+    
+        return text
     }
     
     /**
@@ -28,8 +48,8 @@ export default class VigenereCipher
                 ciphertext += this.tabulaRecta[padded[i]][letter]
             }
         }
-        
-        return ciphertext
+
+        return this.apos(ciphertext)
     }
     
     /**
@@ -42,7 +62,7 @@ export default class VigenereCipher
     decrypt(ciphertext, keyword)
     {
         let plaintext = ''
-        ciphertext = ciphertext.toUpperCase()
+        ciphertext = this.posa(ciphertext.toUpperCase())
         keyword = this.padKeyword(keyword, ciphertext.length)
 
         const split = ciphertext.split('')
