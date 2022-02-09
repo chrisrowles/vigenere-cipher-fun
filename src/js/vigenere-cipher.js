@@ -39,18 +39,22 @@ export default class VigenereCipher
     */
     encrypt(plaintext, keyword)
     {
-        let ciphertext = ''
+        let ciphertext = '', consoleText = ''
         plaintext = plaintext.toUpperCase()
         keyword = this.padKeyword(keyword, plaintext.length)
 
         const split = plaintext.split('')
         for (const [i, letter] of split.entries()) {
             if (letter === ' ') {
+                consoleText += space
                 ciphertext += space
             } else {
+                consoleText += this.tabulaRecta[keyword[i]][letter]
                 ciphertext += this.apos(this.tabulaRecta[keyword[i]][letter])
             }
         }
+
+        console.log(consoleText)
 
         return ciphertext
     }
@@ -65,17 +69,12 @@ export default class VigenereCipher
     decrypt(ciphertext, keyword)
     {
         let plaintext = ''
-        console.log({ ciphertext })
         ciphertext = this.posa(ciphertext.toUpperCase())
         keyword = this.padKeyword(keyword, ciphertext.length)
 
-        console.log({ ciphertext })
-
         const split = ciphertext.split('')
         for (const [i, letter] of split.entries()) {
-            console.log({ letter })
             if (/\0.*$/g.test(letter)) {
-                console.log('hi')
                 plaintext += ' '
             } else {
                 plaintext += this.getOriginalPosition(this.tabulaRecta[keyword[i]], letter)
