@@ -1,5 +1,5 @@
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-const space = 'DDAFDDAF'
+const space = 'DDAF..'
 
 export default class VigenereCipher
 {
@@ -18,6 +18,7 @@ export default class VigenereCipher
     encrypt(plaintext, keyword)
     {
         let ciphertext = ''
+        plaintext = plaintext.toUpperCase()
         const padded = this.padKeyword(keyword, plaintext.length)
 
         for (const [i, letter] of plaintext.split('').entries()) {
@@ -41,15 +42,14 @@ export default class VigenereCipher
     decrypt(ciphertext, keyword)
     {
         let plaintext = ''
+        ciphertext = ciphertext.toUpperCase()
         keyword = this.padKeyword(keyword, ciphertext.length)
 
         const split = ciphertext.split('')
         for (const [i, letter] of split.entries()) {
             let check = ''
-            if (letter === space.slice(0,1)) {
-                for (let j = 0; j < space.length; ++j) {
-                    check += split[i+j]  
-                }
+            for (let j = 0; j < space.length; ++j) {
+                check += split[i+j]  
             }
             
             if (check === space) {
