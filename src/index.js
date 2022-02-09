@@ -24,6 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
         decrypted.value = cipher.decrypt(ciphertext.value, keyword.value)
     })
 
+    keyword.addEventListener('input', () => {
+        encrypted.value = cipher.encrypt(plaintext.value, keyword.value)
+        decrypted.value = cipher.decrypt(ciphertext.value, keyword.value)
+    })
+    
     plaintext.addEventListener('input', (e) => encrypted.value = cipher.encrypt(e.target.value, keyword.value))
     ciphertext.addEventListener('input', (e) => decrypted.value = cipher.decrypt(e.target.value, keyword.value))
 })

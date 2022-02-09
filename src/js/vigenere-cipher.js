@@ -128,7 +128,7 @@ export default class VigenereCipher
     * @return {string}
     */
     padKeyword(keyword, limit) {
-        let padded = keyword
+        let padded = keyword.toUpperCase()
         
         while (padded.length < limit) {
             padded += padded
