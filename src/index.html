@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container pt-5">
+        <div class="mb-3">
+            <label for="keyword" class="form-label">Key</label>
+            <input type="text" class="form-control" id="keyword">
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <form>
+                    <div class="mb-3">
+                        <label for="encrypt-plaintext" class="form-label">Plaintext to Encrypt</label>
+                        <textarea class="form-control" id="encrypt-plaintext" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="encryption" class="form-label">Encrypted text</label>
+                        <textarea class="form-control" id="encrypted-text" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success" id="encrypt">Encrypt</button>
+                </form>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <form>
+                    <div class="mb-3">
+                        <label for="decrypt-ciphertext" class="form-label">Ciphertext to Encrypt</label>
+                        <textarea class="form-control" id="decrypt-ciphertext" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="decrypted-text" class="form-label">Decrypted text</label>
+                        <textarea class="form-control" id="decrypted-text" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-danger" id="decrypt">Decrypt</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="./vigenere-cipher.bundle.js"></script>
+</body>
+</html>
