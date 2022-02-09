@@ -1,4 +1,5 @@
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+const space = 'DDAFDDAF'
 
 export default class VigenereCipher
 {
@@ -20,7 +21,11 @@ export default class VigenereCipher
         const padded = this.padKeyword(keyword, plaintext.length)
 
         for (const [i, letter] of plaintext.split('').entries()) {
-            ciphertext += this.tabulaRecta[padded[i]][letter]
+            if (letter === ' ') {
+                ciphertext += space
+            } else {
+                ciphertext += this.tabulaRecta[padded[i]][letter]
+            }
         }
         
         return ciphertext
@@ -38,8 +43,20 @@ export default class VigenereCipher
         let plaintext = ''
         keyword = this.padKeyword(keyword, ciphertext.length)
 
-        for (const [i, letter] of ciphertext.split('').entries()) {
-            plaintext += this.getOriginalPosition(this.tabulaRecta[keyword[i]], letter)
+        const split = ciphertext.split('')
+        for (const [i, letter] of split.entries()) {
+            let check = ''
+            if (letter === space.slice(0,1)) {
+                for (let j = 0; j < space.length; ++j) {
+                    check += split[i+j]  
+                }
+            }
+            
+            if (check === space) {
+                plaintext += ' '
+            } else {
+                plaintext += this.getOriginalPosition(this.tabulaRecta[keyword[i]], letter)
+            }
         }
         
         return plaintext
