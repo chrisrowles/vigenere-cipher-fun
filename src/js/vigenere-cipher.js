@@ -1,4 +1,6 @@
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+const space = '!!'
+const pShift = 13
 
 export default class VigenereCipher
 {
@@ -9,7 +11,7 @@ export default class VigenereCipher
 
     apos(plaintext) {
         return [...plaintext]
-            .map((char) => parseInt(char, 36) - 10)
+            .map((char) => (parseInt(char, 36) - 10) + pShift)
             .filter((char) => char >= 0)
             .toLocaleString('en-US', {
                 minimumIntegerDigits: 2,
@@ -22,7 +24,7 @@ export default class VigenereCipher
     posa(ciphertext) {
         let text = ''
         for (const n of ciphertext.match(/.{1,2}/g)) {
-            text += String.fromCharCode(parseInt(n) + 'A'.charCodeAt(0))
+            text += String.fromCharCode((parseInt(n) - pShift) + 'A'.charCodeAt(0))
         }
     
         return text
@@ -39,17 +41,18 @@ export default class VigenereCipher
     {
         let ciphertext = ''
         plaintext = plaintext.toUpperCase()
-        const padded = this.padKeyword(keyword, plaintext.length)
+        keyword = this.padKeyword(keyword, plaintext.length)
 
-        for (const [i, letter] of plaintext.split('').entries()) {
+        const split = plaintext.split('')
+        for (const [i, letter] of split.entries()) {
             if (letter === ' ') {
-                ciphertext += '!'
+                ciphertext += space
             } else {
-                ciphertext += this.tabulaRecta[padded[i]][letter]
+                ciphertext += this.apos(this.tabulaRecta[keyword[i]][letter])
             }
         }
 
-        return this.apos(ciphertext)
+        return ciphertext
     }
     
     /**
@@ -62,12 +65,17 @@ export default class VigenereCipher
     decrypt(ciphertext, keyword)
     {
         let plaintext = ''
+        console.log({ ciphertext })
         ciphertext = this.posa(ciphertext.toUpperCase())
         keyword = this.padKeyword(keyword, ciphertext.length)
 
+        console.log({ ciphertext })
+
         const split = ciphertext.split('')
         for (const [i, letter] of split.entries()) {
-            if (letter === '!') {
+            console.log({ letter })
+            if (/\0.*$/g.test(letter)) {
+                console.log('hi')
                 plaintext += ' '
             } else {
                 plaintext += this.getOriginalPosition(this.tabulaRecta[keyword[i]], letter)
