@@ -28,3 +28,6 @@ Obviously this isn't really secure, so please don't rely on it for anything sens
     console.log({ encrypted, decrypted })
     // { encrypted: 'LXFOPV!MH!OEIB', decrypted: 'ATTACK AT DAWN' }
     ```
+## LICENSE
+
+[MIT](LICENSE)
