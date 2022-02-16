@@ -1,0 +1,16 @@
+{
+  "name": "vigenere.js",
+  "version": "0.0.1",
+  "description": "A javascript implementation of the Vigenère cipher.",
+  "main": "index.js",
+  "author": "Chris Rowles",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisrowles/vigenere.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chrisrowles/vigenere.js/issues"
+  },
+  "homepage": "https://github.com/chrisrowles/vigenere.js#readme"
+}
