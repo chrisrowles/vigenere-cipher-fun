@@ -20,7 +20,6 @@ Obviously this isn't really secure, so please don't rely on it for anything sens
 
     const key = 'lemon'
     const plaintext = 'attack at dawn'
-    const ciphertext = ''
 
     const encrypted = vigenere.encrypt(plaintext, key)
     const decrypted = vigenere.decrypt(encrypted, key)
