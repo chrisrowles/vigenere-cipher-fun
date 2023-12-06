@@ -1,8 +1,8 @@
 {
   "name": "vigenere.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A javascript implementation of the Vigenère cipher.",
-  "main": "dist/VigenereCipher.ts",
+  "main": "dist/VigenereCipher.js",
   "types": "dist/VigenereCipher.d.ts",
   "author": "Chris Rowles",
   "license": "MIT",
