@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VigenereCipher = void 0;
-const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 class VigenereCipher {
     constructor() {
         this.tabulaRecta = this.buildTabulaRecta();
@@ -13,12 +13,12 @@ class VigenereCipher {
      * @param keyword - the encryption key to use
      */
     encrypt(plaintext, keyword) {
-        let ciphertext = "";
+        let ciphertext = '';
         plaintext = plaintext.toUpperCase();
         const padded = this.padKeyword(keyword, plaintext.length);
-        for (const [i, letter] of plaintext.split("").entries()) {
-            if (letter === " ") {
-                ciphertext += "!";
+        for (const [i, letter] of plaintext.split('').entries()) {
+            if (letter === ' ') {
+                ciphertext += '!';
             }
             else {
                 ciphertext += this.tabulaRecta[padded[i]][letter];
@@ -33,13 +33,13 @@ class VigenereCipher {
      * @param keyword - the decryption key to use
      */
     decrypt(ciphertext, keyword) {
-        let plaintext = "";
+        let plaintext = '';
         ciphertext = ciphertext.toUpperCase();
         keyword = this.padKeyword(keyword, ciphertext.length);
-        const split = ciphertext.split("");
+        const split = ciphertext.split('');
         for (const [i, letter] of split.entries()) {
-            if (letter === "!") {
-                plaintext += " ";
+            if (letter === '!') {
+                plaintext += ' ';
             }
             else {
                 plaintext += this.getOriginalPosition(this.tabulaRecta[keyword[i]], letter);
@@ -68,7 +68,7 @@ class VigenereCipher {
         for (const letter of alphabet) {
             const row = {};
             for (const shift of alphabet) {
-                row[shift] = "";
+                row[shift] = '';
             }
             column[letter] = row;
         }

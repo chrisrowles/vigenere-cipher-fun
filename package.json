@@ -1,6 +1,6 @@
 {
   "name": "vigenere.js",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A javascript implementation of the Vigenère cipher.",
   "main": "dist/VigenereCipher.ts",
   "types": "dist/VigenereCipher.d.ts",
