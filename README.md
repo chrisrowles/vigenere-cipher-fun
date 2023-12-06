@@ -1,9 +1,8 @@
 # vigenere.js
 
-A javascript implementation of the Vigenère cipher.
+A javascript implementation of the [Vigenère cipher](https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher).
 
-### DISCLAIMER
-Obviously this isn't really secure, so please don't rely on it for anything sensitive, it's just a learning exercise and a bit of fun...
+This isn't secure, so please don't rely on it for anything sensitive, it's just a learning exercise and a bit of fun...
 
 ## Getting started
 
@@ -14,16 +13,22 @@ Obviously this isn't really secure, so please don't rely on it for anything sens
 
 2. Use
     ```js
-    const vigenere = require('vigenere.js')
+    import { VigenereCipher } from "vigenere.js";
 
-    const key = 'lemon'
-    const plaintext = 'attack at dawn'
+    const cipher = new VigenereCipher();
 
-    const encrypted = vigenere.encrypt(plaintext, key)
-    const decrypted = vigenere.decrypt(encrypted, key)
+    const key = "lemon";
+    const plaintext = "attack at dawn";
 
-    console.log({ encrypted, decrypted })
-    // { encrypted: 'LXFOPV!MH!OEIB', decrypted: 'ATTACK AT DAWN' }
+    const encrypted = cipher.encrypt(plaintext, key);
+    const decrypted = cipher.decrypt(encrypted, key);
+
+    console.log({
+        key,
+        plaintext,
+        encrypted,
+        decrypted,
+    });
     ```
 ## LICENSE
 
