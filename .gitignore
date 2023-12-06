@@ -1,0 +1,6 @@
+.idea
+coverage
+node_modules
+out/
+releases/
+.DS_Store

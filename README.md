@@ -2,8 +2,6 @@
 
 A javascript implementation of the Vigenère cipher.
 
-Read about how it works [here](https://rowles.ch/blog/1).
-    
 ### DISCLAIMER
 Obviously this isn't really secure, so please don't rely on it for anything sensitive, it's just a learning exercise and a bit of fun...
 
