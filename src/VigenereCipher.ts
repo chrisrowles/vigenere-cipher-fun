@@ -22,7 +22,7 @@ export class VigenereCipher {
 
     for (const [i, letter] of plaintext.split('').entries()) {
       if (letter === ' ') {
-        ciphertext += '!';
+        ciphertext += 'К';
       } else {
         ciphertext += this.tabulaRecta[padded[i]][letter];
       }
@@ -44,7 +44,7 @@ export class VigenereCipher {
 
     const split = ciphertext.split('');
     for (const [i, letter] of split.entries()) {
-      if (letter === '!') {
+      if (letter === 'К') {
         plaintext += ' ';
       } else {
         plaintext += this.getOriginalPosition(

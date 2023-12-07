@@ -18,7 +18,7 @@ class VigenereCipher {
         const padded = this.padKeyword(keyword, plaintext.length);
         for (const [i, letter] of plaintext.split('').entries()) {
             if (letter === ' ') {
-                ciphertext += '!';
+                ciphertext += 'К';
             }
             else {
                 ciphertext += this.tabulaRecta[padded[i]][letter];
@@ -38,7 +38,7 @@ class VigenereCipher {
         keyword = this.padKeyword(keyword, ciphertext.length);
         const split = ciphertext.split('');
         for (const [i, letter] of split.entries()) {
-            if (letter === '!') {
+            if (letter === 'К') {
                 plaintext += ' ';
             }
             else {
